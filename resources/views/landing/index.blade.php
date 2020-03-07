@@ -3,10 +3,10 @@
 @section('title','Ата жолы')
 
 @section('content')
-   @include('pub.components.s-sites')
-   @include('pub.components.s-books')
-   @include('pub.components.s-about')
-   @include('pub.components.s-aqul')
-   @include('pub.components.contact')
+   @include('landing.components.s-sites')
+   @include('landing.components.s-books')
+   @include('landing.components.s-about')
+   @include('landing.components.s-aqul')
+   @include('landing.components.contact')
 
 @endsection

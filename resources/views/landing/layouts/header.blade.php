@@ -151,7 +151,7 @@
 </footer>
 
 {{--<link rel="stylesheet" href="css/styles.min.css">--}}
-<link href="{{ asset('css/styles.min.css') }}" rel="stylesheet">
-<script src="{{asset('js/app.js')}}"></script>
+<link href="{{ asset('landing/css/styles.min.css') }}" rel="stylesheet">
+<script src="{{asset('landing/js/app.js')}}"></script>
 </body>
 </html>

@@ -43,7 +43,7 @@ Route::group(
             });
 //            Route::get('/', 'IndexController@index')->name('home');
 //            Route::get('/page/{id}', 'PageController@show')->name('pages.show');
-            Route::get('/', 'Pub\MainController@index')->name('main');
+            Route::get('/', 'Landing\LandingController@index')->name('landing');
         }
 );
 //Route::get('/home', 'HomeController@index')->name('home');
