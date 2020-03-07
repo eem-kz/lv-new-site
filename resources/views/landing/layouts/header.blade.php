@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kk">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
     <!-- CSRF Token -->
@@ -8,7 +8,8 @@
     <title>@yield('title') - {{ config('app.subtitle') }}</title>
     <meta name="description"
           content="Ата және жол ұғымдарының қосарлана аталуынан-ақ түсінікті. Ата –бабаларымыздың меңгерген ғылымы – Ілім мен Білім ортасымен байланысты екені. Салт-дәстүрдің дінмен байланыса, қабаттаса құбылуынан болған дүние. Тылсым дүниемен, Аруақ ұғымымен тікелей байланысты.">
-    <meta name="keywords" content="Ата жолы, аруақ, тылсым дүние, тылсым құбылыстар, түс көру, түс жору, салт дәстүр, ата, баба, ана, әдебиет, тарих, би, шешен, жиренше, әулие, ұлттық, хан, дін, ислам, қазақ" />
+    <meta name="keywords"
+          content="Ата жолы, аруақ, тылсым дүние, тылсым құбылыстар, түс көру, түс жору, салт дәстүр, ата, баба, ана, әдебиет, тарих, би, шешен, жиренше, әулие, ұлттық, хан, дін, ислам, қазақ"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
@@ -21,9 +22,20 @@
     <meta name="msapplication-navbutton-color" content="#000">
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#000">
-    <style>body {opacity: 0;overflow-x: hidden;}html {background-color: #a5c8e8;}</style>
+    <style>body {
+            opacity: 0;
+            overflow-x: hidden;
+        }
+
+        html {
+            background-color: #a5c8e8;
+        }</style>
 </head>
-<body class="ishome"><div class="preloader"><div class="pulse"></div></div>
+
+<body class="ishome">
+<div class="preloader">
+    <div class="pulse"></div>
+</div>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
@@ -70,17 +82,28 @@
 </nav>
 <!-- Masthead -->
 <header id="home" class="masthead section-overlay">
+{{--***--}}
+<!-- Right Side Of Navbar -->
+
+    {{--****--}}
     <div class="container h-100">
         <div class="row h-100 align-items-center justify-content-center text-center">
+            <ul style="position: relative;" class="d-flex">
+                @foreach (config('app.locales') as $locale)
+                    <li class="nav-item" style="margin: 0 1rem;">
+                        <a class="nav-link"
+                           href="{{ route(\Illuminate\Support\Facades\Route::currentRouteName(), $locale) }}"
+                           @if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
+                    </li>
+                @endforeach
+            </ul>
             <div class="col-lg-10 align-self-end">
-                <h1 class="text-uppercase font-weight-bold">Ата жолы</h1>
-                <h3 class="mt-lg-3 mt-2 ">Бабалар салған ізбенен...</h3>
+                <h1 class="text-uppercase font-weight-bold">{{ __('landing.header_title') }}</h1>
+                <h3 class="mt-lg-3 mt-2 ">{{ __('landing.header_subtitle_h3') }}</h3>
                 <hr class="divider my-lg-5 my-3">
             </div>
             <div class="col-lg-8 align-self-baseline">
-                <h2 class="mb-5">
-                    Ата жолымен Рухани жаңаруға
-                </h2>
+                <h2 class="mb-5">{{ __('landing.header_subtitle_h2') }}</h2>
                 <!--<a class="btn btn-primary btn-xl js-scroll-trigger" href="#books">Кітаптар</a>-->
             </div>
         </div>

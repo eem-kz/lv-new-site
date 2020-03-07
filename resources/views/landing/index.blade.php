@@ -1,4 +1,4 @@
-@extends('layouts.main.header')
+@extends('landing.layouts.header')
 
 @section('title','Ата жолы')
 
