@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Landing;
 
 use App\Http\Controllers\Controller;
 use App\Models\LandingSection;
-use App\Models\BooksCategory;
+use App\Models\BookCategory;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -15,7 +15,7 @@ class LandingController extends Controller
 //        echo __("public.page_title");
 //        echo '';
 //        $section = LandingSection::lang(app()->getLocale())->get();
-        $books_names = BooksCategory::lang(app()->getLocale())->get();
+        $books_names = BookCategory::lang(app()->getLocale())->get();
 //        dd($section);
         return view('landing.index', compact('books_names'));
     }

@@ -27,4 +27,16 @@ class Localization
 
     }
 
+    /**
+     * @param $date
+     * @return false|string
+     */
+    function convertDateToMysqlFormat($date)
+    {
+        return date("Y-m-d", strtotime( preg_replace("/(\d{2})-(\d{2})-(\d{4})/", "$3-$2-$1", $date) ));
+    }
+
+
+
+
 }

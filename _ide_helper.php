@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.17.1 on 2020-03-07 04:58:05.
+ * Generated for Laravel 6.18.2 on 2020-03-18 11:10:08.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -506,8 +506,6 @@ namespace Illuminate\Support\Facades {
         
         /**
          * Resolve the given type from the container.
-         * 
-         * (Overriding Container::make)
          *
          * @param string $abstract
          * @param array $parameters
@@ -522,8 +520,6 @@ namespace Illuminate\Support\Facades {
         
         /**
          * Determine if the given abstract type has been bound.
-         * 
-         * (Overriding Container::bound)
          *
          * @param string $abstract
          * @return bool 
@@ -2734,7 +2730,6 @@ namespace Illuminate\Support\Facades {
          *
          * @param mixed $command
          * @return mixed 
-         * @throws \RuntimeException
          * @static 
          */ 
         public static function dispatchToQueue($command)
@@ -15013,6 +15008,19 @@ namespace App\Facades {
         {
                         /** @var \App\Services\Localization $instance */
                         return $instance->getLocale();
+        }
+        
+        /**
+         * 
+         *
+         * @param $date
+         * @return false|string 
+         * @static 
+         */ 
+        public static function convertDateToMysqlFormat($date)
+        {
+                        /** @var \App\Services\Localization $instance */
+                        return $instance->convertDateToMysqlFormat($date);
         }
          
     }

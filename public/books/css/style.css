@@ -1,0 +1,49 @@
+::-webkit-scrollbar-button {
+    width: 5px;
+    height: 0;
+}
+
+/* Цвет дорожки, по которой двигается бегунок прокрутки. */
+::-webkit-scrollbar-track {
+    background-color: #ecedee
+}
+
+/* Цвет бегунка полосы, а так же его закругление. */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    background-color: #4bb5ef;
+}
+
+/* Цвет бегунка при наведении на него курсора. */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #36a6ef;
+}
+
+/* Основная ширина полосы прокрутки. */
+::-webkit-resizer {
+    width: 4px;
+    height: 0;
+}
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+.mm-listitem__btn, .mm-listitem__text{
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.mm-listitem a, .mm-listitem span{
+    padding-left: 1.5rem;
+    line-height: 1.1;
+}
+
+/*.mm-panel_opened {height: 70px;width: 340px;background: whitesmoke;overflow-y: scroll;border:1px solid;}*/
+.mm-panel_opened::-webkit-scrollbar-track {border-radius: 4px;}
+.mm-panel_opened::-webkit-scrollbar {width: 6px;}
+.mm-panel_opened::-webkit-scrollbar-thumb {border-radius: 4px;background: #f0f2f5;}
+.mm-panel_opened:hover::-webkit-scrollbar-thumb {background: #D6D7DA;}
+
+
+
