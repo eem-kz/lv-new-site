@@ -2,18 +2,18 @@
 
     <option value="{{$item->id ?? ""}}"
 
-            @isset($category->id)
+            @isset($book->id)
 
-            @if ($category->parent_id == $item->id)
+            @if ($book->book_category_id == $item->id)
             selected=""
             @endif
 
-            @if ($category->id == $item->id || $item->parent_id == $dd)
+           {{-- @if ($book->id == $item->id || $item->parent_id == $dd)
                 @php
-                    $dd = $category->id;
+                    $dd = $book->id;
                 @endphp
             hidden=""
-            @endif
+            @endif--}}
 
             @endisset
 
@@ -23,7 +23,7 @@
 
     @if (count($item->children) > 0)
 
-        @include('admin.book_categoryes.partials.book_category', [
+        @include('admin.book_posts.partials.book_category', [
           'book_list' => $item->children,
           'delimiter'  => ' - ' . $delimiter
         ])

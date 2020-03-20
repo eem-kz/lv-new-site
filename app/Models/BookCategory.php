@@ -64,6 +64,13 @@ class BookCategory extends Model
         return $query->where('parent_id', '0');
     }
 
+
+    public function scopeNoParent($query)
+    {
+        return $query->where('parent_id', '>=', '1');
+    }
+
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -72,8 +79,12 @@ class BookCategory extends Model
         return $this->hasMany(self::class, 'parent_id');
     }
 
-    public function bookPosts()
-    {
-        return $this->belongsToMany('App\Models\BookPost')->withTimestamps();
+
+
+    public function posts(){
+
+        return $this->hasMany(BookPost::class, 'book_category_id','id')->select(['book_category_id', 'post_title', 'slug']);
+
     }
+
 }

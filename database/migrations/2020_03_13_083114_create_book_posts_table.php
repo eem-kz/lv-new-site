@@ -15,6 +15,7 @@ class CreateBookPostsTable extends Migration
     {
         Schema::create('book_posts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('book_category_id')->index()->unsigned();
             $table->integer('post_author')->index()->unsigned();
             $table->longText('post_content');
             $table->text('post_title');
@@ -22,27 +23,13 @@ class CreateBookPostsTable extends Migration
             $table->string('image')->default('default.png');
             $table->integer('view_count')->default(0);
             $table->boolean('is_approved')->default(false);
+            $table->boolean('post_status')->default('0');
             $table->string('lang')->default('KZ');
-            $table->boolean('post_status')->default('1');
             $table->enum('comment_status', ['open', 'close']);
-            $table->bigInteger('comment_count')->default(0);
-            $table->dateTime('post_modified')->nullable();
+            $table->date('post_modified')->nullable();
             $table->timestamps();
 
-            /*
 
-            `comment_count` BIGINT(20) NOT NULL DEFAULT '0',
-            PRIMARY KEY (`ID`),
-            INDEX `post_name` (`post_name`(191)),
-            INDEX `type_status_date` (`post_type`, `post_status`, `post_date`, `ID`),
-            INDEX `post_parent` (`post_parent`),
-            INDEX `post_author` (`post_author`)
-        )
-            COLLATE='utf8_general_ci'
-            ENGINE=InnoDB
-            AUTO_INCREMENT=1255
-        ;
-             */
         });
     }
 

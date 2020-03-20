@@ -6,15 +6,17 @@ use App\Models\BookPost;
 use Faker\Generator as Faker;
 
 $factory->define(BookPost::class, function (Faker $faker) {
-    $title = $faker->sentence(2);
+    $title = $faker->sentence(4);
     return [
-            'post_author' => function() {
+            'post_author' => function () {
                 return factory(App\User::class)->create()->id;
             },
+            'book_category_id' => rand(1, 33),
             'post_content' => $faker->realText(500),
             'post_title' => $faker->sentence(5),
             'slug' => Str::slug($title),
             'post_status' => $faker->boolean,
+            'post_modified' => $faker->dateTimeThisMonth()->format('Y-m-d'),
     ];
 });
 /*

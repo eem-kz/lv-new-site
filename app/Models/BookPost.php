@@ -51,13 +51,19 @@ class BookPost extends Model
     protected $guarded = [];
 
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo('App\User','post_author','id')->select(['id','name']);
     }
 
-    public function categories()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function bookCategory()
     {
-        return $this->belongsToMany('App\Models\BookCategory')->withTimestamps();
+        return $this->belongsTo(BookCategory::class,'book_category_id','id')->select(['id','title']);
     }
 }

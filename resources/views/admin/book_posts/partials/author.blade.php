@@ -2,15 +2,11 @@
 
     <option value="{{$item->id ?? ""}}"
 
-            @isset($category->id)
+            @isset($book->id)
 
-            @if ($category->parent_id == $item->id)
-            selected=""
-            @endif
-
-            @if ($category->id == $item->id )
-            hidden=""
-            @endif
+                @if ($book->post_author == $item->id)
+                    selected=""
+                @endif
 
             @endisset
 

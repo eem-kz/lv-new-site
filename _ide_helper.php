@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.18.2 on 2020-03-18 11:10:08.
+ * Generated for Laravel 6.18.2 on 2020-03-18 13:11:44.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -14974,28 +14974,6 @@ namespace App\Facades {
      * 
      *
      */ 
-    class SlugKazToLatService {
-        
-        /**
-         * 
-         *
-         * @param $str
-         * @param array $options
-         * @return bool|mixed|null|string|string[] 
-         * @static 
-         */ 
-        public static function slugKazToLat($str, $options = [])
-        {
-                        /** @var \App\Services\SlugKazToLat $instance */
-                        return $instance->slugKazToLat($str, $options);
-        }
-         
-    }
-
-    /**
-     * 
-     *
-     */ 
     class LocalizationService {
         
         /**
@@ -15021,6 +14999,33 @@ namespace App\Facades {
         {
                         /** @var \App\Services\Localization $instance */
                         return $instance->convertDateToMysqlFormat($date);
+        }
+        
+        /**
+         * 
+         *
+         * @param $date
+         * @return null|string|string[] 
+         * @static 
+         */ 
+        public static function reverseConvertDate($date)
+        {
+                        /** @var \App\Services\Localization $instance */
+                        return $instance->reverseConvertDate($date);
+        }
+        
+        /**
+         * 
+         *
+         * @param $str
+         * @param array $options
+         * @return bool|mixed|null|string|string[] 
+         * @static 
+         */ 
+        public static function slugKazToLat($str, $options = [])
+        {
+                        /** @var \App\Services\Localization $instance */
+                        return $instance->slugKazToLat($str, $options);
         }
          
     }
@@ -18791,8 +18796,6 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
 
     class View extends \Illuminate\Support\Facades\View {}
-
-    class SlugKz extends \App\Facades\SlugKazToLatService {}
 
     class LocalizationService extends \App\Facades\LocalizationService {}
 

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Facades\LocalizationService;
 use App\Http\Controllers\Controller;
 use App\Models\BookCategory;
 use Illuminate\Http\Request;
-use SlugKz;
+use Illuminate\Support\Carbon;
+
 
 class BookCategoryController extends Controller
 {
@@ -50,7 +52,7 @@ class BookCategoryController extends Controller
                 'parent_id' => 'required',
                 'slug' => ''
         ]);
-        $data['slug'] = SlugKz::slugKazToLat($data['title']);
+        $data['slug'] = LocalizationService::slugKazToLat($data['title']) . '-' . Carbon::now()->format('dmyHi');
         BookCategory::create($data);
 //        return redirect('/admin/subdivision')->with('success', 'Show is successfully saved');
         return redirect()->route('admin.category.index')->with('successMsg', 'Category Successfully Saved');
@@ -109,6 +111,7 @@ class BookCategoryController extends Controller
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy($id)
     {

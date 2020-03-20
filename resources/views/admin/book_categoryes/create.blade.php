@@ -24,7 +24,7 @@
                             <form role="form" action="{{ route('admin.category.store') }}" method="post">
                                 {{ csrf_field() }}
                                 <div class="card-body">
-                                @include('admin.admin.book_categoryes.partials.form')
+                                @include('admin.book_categoryes.partials.form')
                                 </div><!-- /.card-body -->
                                 <div class="card-footer">
                                     <div class="float-right">

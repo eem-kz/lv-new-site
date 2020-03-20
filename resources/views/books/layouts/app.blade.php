@@ -47,5 +47,29 @@
 <link href="{{ asset('books/css/styles2.min.css') }}" rel="stylesheet">
 <link href="{{ asset('books/css/style.css') }}" rel="stylesheet">
 <script src="{{asset('books/js/scripts2.min.js')}}"></script>
+<script>
+    $(function () {
+
+        $('a.get-book').click(function () {
+            event.preventDefault();
+            let url = $(this).attr('href');
+            // let slug = $(this).data('slug');
+            $.ajax({
+                url: url,
+                type: 'GET',
+                // data: {slug: slug},
+                success: function (response) {
+                    history.pushState('', '', url);
+                    $('#response').html(response);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            });
+            return false; // for good measure
+        });
+
+    });
+</script>
 </body>
 </html>

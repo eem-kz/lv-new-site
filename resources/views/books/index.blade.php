@@ -1,10 +1,9 @@
-{{ __METHOD__ }}
 @extends('books.layouts.app')
 
 @section('title','Ата жолы')
 
 @section('content')
-    <div id="page">
+    <div id="page" style="max-width: 1200px;">
 
         <div class="mh-head Sticky mh-btns-left-2 ">
 				<span class="mh-btns-left d-md-none">
@@ -13,47 +12,60 @@
 				</span>
             <span class="mh-text">Ата жолы кітапханасы</span>
         </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-9 col-md-8 col-12">
-{{--                    {{ dd($books_names) }}--}}
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis cum eveniet
-                        facilis ipsam
-                        laudantium, molestiae numquam possimus! At expedita facere id iusto magnam mollitia nemo quod,
-                        repellat
-                        reprehenderit totam?</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis cum eveniet
-                        facilis ipsam
-                        laudantium, molestiae numquam possimus! At expedita facere id iusto magnam mollitia nemo quod,
-                        repellat
-                        reprehenderit totam?</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis cum eveniet
-                        facilis ipsam
-                        laudantium, molestiae numquam possimus! At expedita facere id iusto magnam mollitia nemo quod,
-                        repellat
-                        reprehenderit totam?</p>
-                </div>
-                <!-- /.col-lg-8 -->
-                <div class="col-lg-3 col-md-4 col-12" style="color: red;">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus blanditiis deserunt
-                        doloremque dolores
-                        eaque esse et explicabo hic, iusto modi neque, obcaecati, omnis pariatur perspiciatis porro quam
-                        ullam
-                        vitae!</p>
-                    <p>Aperiam architecto eum incidunt tempora ut! Accusamus assumenda aut consequuntur doloribus
-                        ducimus eum
-                        eveniet fugiat inventore ipsa necessitatibus nemo nihil porro provident quas, quasi quis quos
-                        sapiente sunt
-                        veniam veritatis.</p>
-                    <p>Aliquam amet assumenda consequatur corporis culpa cumque est ex in laboriosam magnam magni
-                        molestias nemo
-                        nihil nobis odio odit perspiciatis reiciendis suscipit, tempore vero? Expedita laboriosam libero
-                        quae quasi
-                        quia.</p>
+        <div class="container-fluid book-content">
+            <div class="row no-gutters">
+                <div class="col-md-12 col-xs-12 my-lg-4 my-3">
+                    <!-- Default box -->
+                    <div class="card" id="response">
+                        <div class="card-header">
+                            <h3 class="card-title">Аманаттар айнасы. Алғы сөз.</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Аса қамқор, ерекше мейрімді Алланың атымен бастаймын!</p>
+                            <p><em>Ақ сөйле тілім, ақ сөйле! Жүрекпен тергеп нақ сөйле! Жамандықты қашырып айт!
+                                    Жақсылығын асырып айт! Тексіздікті белінен басып айт! Тектілікті тереңнен тартып
+                                    асылын айт! Жау жағадан алғанда иттердің етектен тарқанынын айт. Елдігін сатқан
+                                    жастардың тасырын айт! Діншілердің момын қазақты бөлшектеп іріткіге түсіргенін айт.
+                                    Талай белгісіз жатқан шежіренің ғасырын айт! Европашыл әкімдердің жасығын айт!
+                                    Байлықтан басқаны ойламайтын ғалым мен молдалардың арам ниет ауздарының сасығын айт!
+                                    Қаситті кітаптардың ғылымын айт! Әулие бабалардың тура жолды салған қасиеті қастерлі
+                                    білімі мен ілімін айт! Аманатты айт! Жасырмай жасық болмай ашығын айт!</em></p>
+                            <p><strong>Басылым міндеті</strong>; Құранның бүткіл белгілі әлі адамзатқа белгісіз
+                                ғылымдардың негізі болып табылатынын дәлелдеу. Әлемде болған және болуға тиісті
+                                оқиғалардың бәрі құранға байланысты ғана туындайтынын көрсету. Әлемдегі түсірілген
+                                кітаптардың бәрі құран арқылы расталып қорғалатындығын білдіру. Болашақтағы болатын
+                                қиямет оқиғалары мен кәзіргі таңда болып жатқан оқиғалар, апаттар, аурулар тек құран
+                                үгітін толық меңгеру арқылы ғана әлем халқы қайғы қасіретсіз өсіп өнуге мүмкіндік
+                                туатынын жариялау.</p>
+                            <p><strong>Басылым мүддесі</strong>; Қазақ елінің дін тану және меңгеру барысында әлемдер
+                                алдыңда ең биік шыңына жетіп пайғамбарларды өмірге әкелуші бірден-бір халық болып және
+                                тілді тазартып, сөзді таратушы әулиелер мекені екенін нақты тарихи деректермен және Адам
+                                ата тікелей ұрпағы болып, құпия кітаптардың сақтаушы ел екендігіне әлемдер халқының
+                                көзін жеткізу. Шежіренің әдейі бұрмаланған жоғалтқан бөлімдерін құпия сақталған
+                                қазыналар арқылы әлем ғалымдарының алдында нақты деректерді көрсету.</p>
+                            <p><strong>Басылым мақсаты</strong>&nbsp;Қазақ жерінде егемендік алғаннан бері діннің
+                                бұрмаланып, нәтижесінде әдет-ғұрып, салт-дәстүр болып қалыптастырылған аталар жолының
+                                басты қағидалары төрт кітаптың қаймағы намаздарын, орындалу амалдарының бөлшектеліп және
+                                қосымша құраннан түсірілген заманына сай дінді қалыптастыруға берілген &laquo;өліктермен
+                                сөйлесу&raquo;, &laquo;өлілер кітабын&raquo; теріске шығарып, елді қиямет оқиғасына
+                                әкеліп тіреген жалғаншыларды, құранды зиянға алушыларды әшкерелеп, тарихты өз ізіне
+                                жалғастырып, тура жолды қайта қалыптастыру болып табылады. Әлемдер халқының бірлігін,
+                                тілдердің теңдігін, алдағы тосып тұрған апаттар, аурулар, сынақтардан құтқару амалдарын
+                                көрсету. Елге тұлға ғылымға, ілімге тұтқа болатын заманға сай ұрпақтарды тәрбилеу
+                                жолдарын көрсетіп, пайғамбарымыз бастап кеткен, Ясауи бабамыздың қалыптастырған жан
+                                ғылымын қайта жалғастыру. Әлемде болып жатқан індет аурулардың алдын алу, сақтану
+                                шараларымен бірге жаңадан емдеу құпияларын көрсету. Шипагерлік ілімінің медтинаның атасы
+                                болып және дамытушы бағдар беруші болып, құран арқылы ғана Алладан түсіріліп тұратынын
+                                әлемдер халқының көзін жеткізу.</p>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
 
+                        </div>
+                        <!-- /.card-footer-->
 
-                </div>
-                <!-- /.col-lg-8 -->
+                    </div><!-- /.card -->
+                </div><!-- /.col-lg-8 -->
             </div><!-- /.row -->
             <div class="row">
                 <!-- Footer -->
@@ -62,17 +74,9 @@
         </div><!-- /.container-fluid -->
 
     </div>{{--/#page--}}
-
     <nav id="menu">
         <ol type="1" id="panel-menu">
-          {{--  @php $l = 0;
-            @endphp
-            @foreach($books_names as $item)
-
-                <li><a href="#/">{{ ++$l.'. '. $item->title }}</a></li>
-            @endforeach--}}
-            @include('books.partials.list-books', ['books_names' => $books_names, 'children'=>false])
-
+            @include('books.partials.list-books', ['books_names' => $books_names])
         </ol>
     </nav>
 

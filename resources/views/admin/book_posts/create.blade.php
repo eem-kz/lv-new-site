@@ -60,6 +60,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
             integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
             crossorigin="anonymous"></script>
+    <script src="{{ asset('bastyq/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
     <script>
         $(function () {
             $('#post_content').summernote({
@@ -100,7 +101,9 @@
                 maxDate: 0
             });
             // $("#datepicker").datetimepicker();
-
+            $("input[data-bootstrap-switch]").each(function(){
+                $(this).bootstrapSwitch('state', $(this).prop('checked'));
+            });
 
         })
 

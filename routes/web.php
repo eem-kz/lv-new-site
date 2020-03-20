@@ -39,6 +39,7 @@ Route::group(
         function () {
             Route::get('/', 'Landing\LandingController@index')->name('landing');
             Route::get('/books', 'Books\BooksController@index')->name('books');
+            Route::get('/book/{slug}', 'Books\BooksController@show')->name('book.detail');
         }
 );
 

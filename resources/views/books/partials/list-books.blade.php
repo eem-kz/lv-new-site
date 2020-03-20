@@ -1,22 +1,39 @@
-@php $l = 0; @endphp
-@foreach($books_names as $item)
-    <li>
-        @if (count($item->children) > 0)
-            <span>{{ $item->title ?? '' }}</span>
+@isset($books_names)
+    @php $l = 0; @endphp
+    @foreach($books_names as $item)
+        <li>
+            @if (count($item->children) > 0)
+                <span>{{ $item->title ?? '' }}</span>
 
-            <ul>
-                @include('books.partials.list-books', [
-                'books_names' => $item->children,
-                'children'=>true
-                ])
-            </ul>
-        @else
-            <a href="#/">{{ $item->title ?? ''}}</a>
+                <ul>
+                    @include('books.partials.list-books', [
+                    'books_names' => $item->children,
+                    'children'=>true
+                    ])
+                </ul>
+            @else
+                @if(count($item->posts) > 0)
+                    <span>{{ $item->title ?? '' }}</span>
+                    <ul>
+                        @foreach($item->posts as $post)
+                            <li>
+                                <a href="{{ route('book.detail',[app()->getLocale(),$post->slug,] ) }}"
+                                   data-slug="{{ $post->slug }}" class="get-book">{{ $post->post_title ?? ''}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
 
-        @endif
-    </li>
-@endforeach
+                @else
+                    <a href="#/">{{ $item->title ?? ''}}</a>
 
+                @endif
+
+            @endif
+
+
+        </li>
+    @endforeach
+@endisset
 {{--
  <li><a href="#/work">Our work</a></li>
             <li><span>About us</span>

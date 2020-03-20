@@ -44,7 +44,8 @@
                                 </thead>
                                 <tbody>
                                 @include('admin.book_categoryes.partials.table',[
-                                    'books_list' => $books_list
+                                    'books_list' => $books_list,
+                                    'i' => 0,
                                 ])
                                 </tbody>
                             </table>

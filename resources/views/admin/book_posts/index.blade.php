@@ -29,10 +29,10 @@
                                     <tr role="row">
                                         <th width="30px">№</th>
                                         <th>Тақырыбы</th>
-                                        <th>Автор</th>
+                                        <th>Кітап атауы</th>
                                         <th>Қаралған саны</th>
-                                        <th>Мәртебесі</th>
                                         <th>Тексерілген</th>
+                                        <th>Мәртебесі</th>
                                         <th>Пікірлер саны</th>
                                         <th>Құрылған күні</th>
                                         <th></th>
@@ -43,30 +43,35 @@
                               <tr>
                                   <td>{{ ++$key }}</td>
                                   <td>{{ $post->post_title }}</td>
-                                  <td>{{ $post->user->name }}</td>
+                                  <td>{{ $post->bookCategory->title }}</td>
                                   <td class="text-center">{{ $post->view_count }}</td>
                                   <td class="text-center">
                                       @if($post->is_approved == true)
-                                          <span class="badge bg-blue">Тексерілген</span>
+                                          <span class="badge bg-success">Тексерілген</span>
                                       @else
                                           <span class="badge bg-pink">Жоқ</span>
                                       @endif
                                   </td>
                                   <td class="text-center">
-                                      @if($post->status == true)
-                                          <span class="badge bg-blue">Жарияланған</span>
+                                      @if($post->post_status == true)
+                                          <span class="badge bg-success">Жарияланған</span>
                                       @else
                                           <span class="badge bg-pink">Жоқ</span>
                                       @endif
                                   </td>
                                   <td class="text-center">{{ $post->comment_count }}</td>
-                                  <td>{{ $post->created_at }}</td>
+                                  <td>{{ $post->post_modified }}</td>
                                   <td class="text-center">
 
-                                      <a href="{{ route('admin.book.edit',$post->id) }}" class="btn btn-info waves-effect">
+                                      <a href="{{ route('admin.book.edit',$post) }}" class="btn btn-info waves-effect">
                                           <i class="fas fa-edit"></i>
                                       </a>
-                                      <button class="btn btn-danger waves-effect" type="button" onclick="deletePost({{ $post->id }})">
+                                      <button class="btn btn-danger waves-effect" type="button" onclick="if(confirm('Are you sure? You want to delete this?')){
+                                              event.preventDefault();
+                                              document.getElementById('delete-form-{{ $post->id }}').submit();
+                                              }else {
+                                              event.preventDefault();
+                                              }">
                                           <i class='fas fa-trash-alt'></i>
                                       </button>
                                       <form id="delete-form-{{ $post->id }}" action="{{ route('admin.book.destroy',$post->id) }}" method="POST" style="display: none;">
