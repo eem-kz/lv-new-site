@@ -15,7 +15,7 @@ class LandingController extends Controller
 //        echo __("public.page_title");
 //        echo '';
 //        $section = LandingSection::lang(app()->getLocale())->get();
-        $books_names = BookCategory::lang(app()->getLocale())->get();
+        $books_names = BookCategory::lang(app()->getLocale())->parent()->get();
 //        dd($section);
         return view('landing.index', compact('books_names'));
     }

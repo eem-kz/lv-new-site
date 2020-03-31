@@ -47,7 +47,7 @@ class BookCategory extends Model
 
     public $timestamps = false;
 
-    public function __construct( array $attributes = [] )
+    public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
         $this->table = 'books_categories';
@@ -80,11 +80,12 @@ class BookCategory extends Model
     }
 
 
-
-    public function posts(){
-
-        return $this->hasMany(BookPost::class, 'book_category_id','id')->select(['book_category_id', 'post_title', 'slug']);
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function posts()
+    {
+        return $this->hasMany(BookPost::class, 'book_category_id', 'id')->select(['book_category_id', 'post_title', 'slug']);
     }
 
 }

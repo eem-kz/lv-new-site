@@ -12,8 +12,8 @@
           content="Ата жолы, аруақ, тылсым дүние, тылсым құбылыстар, түс көру, түс жору, салт дәстүр, ата, баба, ана, әдебиет, тарих, би, шешен, жиренше, әулие, ұлттық, хан, дін, ислам, қазақ"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-    <meta property="og:image" content="img/@1x/preview.jpg">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
+    <meta property="og:image" content="{{ asset('img/og-image_1.png') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Chrome, Firefox OS and Opera -->
@@ -41,13 +41,13 @@
     <div class="container">
         <div class="row no-gutters w-100">
             <div class="col-auto social-buttons">
-                <a href="#" target="_blank" class="btn-floating btn-lg btn-fb" role="button"><i
+                <a href="https://www.facebook.com/atazholy/" target="_blank" class="btn-floating btn-lg btn-fb" role="button"><i
                             class="fab fa-facebook-f"></i></a>
-                <a href="#" target="_blank" class="btn-floating btn-lg btn-tw" role="button"><i
+                <a href="https://twitter.com/AtazholyKZ" target="_blank" class="btn-floating btn-lg btn-tw" role="button"><i
                             class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank" class="btn-floating btn-lg btn-yt" role="button"><i
+                <a href="https://www.youtube.com/channel/UCG3yvnpQHKPb4WX9fHZ6_9A/videos" target="_blank" class="btn-floating btn-lg btn-yt" role="button"><i
                             class="fab fa-youtube"></i></a>
-                <a href="#" target="_blank" class="btn-floating btn-lg btn-reddit" role="button"><i
+                <a href="https://t.me/atazholy" target="_blank" class="btn-floating btn-lg btn-reddit" role="button"><i
                             class="fab fa-telegram"></i></a>
             </div><!-- /.social-buttons -->
 
@@ -88,7 +88,7 @@
     {{--****--}}
     <div class="container h-100">
         <div class="row h-100 align-items-center justify-content-center text-center">
-            <ul style="position: relative;" class="d-flex">
+            <ul style="position: relative;padding: 0;" class="d-flex">
                 @foreach (config('app.locales') as $locale)
                     <li class="nav-item" style="margin: 0 1rem;">
                         <a class="nav-link"
@@ -132,16 +132,13 @@
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7 col-12 mb-3 mb-lg-0">
                 <div class="col-auto social-buttons">
-                    <!--Facebook-->
-                    <a href="#" target="_blank" class="btn-floating btn-lg btn-fb" role="button"><i
+                    <a href="https://www.facebook.com/atazholy/" target="_blank" class="btn-floating btn-lg btn-fb" role="button"><i
                                 class="fab fa-facebook-f"></i></a>
-                    <!--Twitter-->
-                    <a href="#" target="_blank" class="btn-floating btn-lg btn-tw" role="button"><i
+                    <a href="https://twitter.com/AtazholyKZ" target="_blank" class="btn-floating btn-lg btn-tw" role="button"><i
                                 class="fab fa-twitter"></i></a>
-                    <!--Youtube-->
-                    <a href="#" target="_blank" class="btn-floating btn-lg btn-yt" role="button"><i
+                    <a href="https://www.youtube.com/channel/UCG3yvnpQHKPb4WX9fHZ6_9A/videos" target="_blank" class="btn-floating btn-lg btn-yt" role="button"><i
                                 class="fab fa-youtube"></i></a>
-                    <a href="#" target="_blank" class="btn-floating btn-lg btn-reddit" role="button"><i
+                    <a href="https://t.me/atazholy" target="_blank" class="btn-floating btn-lg btn-reddit" role="button"><i
                                 class="fab fa-telegram"></i></a>
                 </div><!-- /.social-buttons -->
             </div>

@@ -64,6 +64,7 @@ class BookPost extends Model
      */
     public function bookCategory()
     {
-        return $this->belongsTo(BookCategory::class,'book_category_id','id')->select(['id','title']);
+        return $this->belongsTo(BookCategory::class,'book_category_id','id')->select(['id','parent_id','title']);
+
     }
 }

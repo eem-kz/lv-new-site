@@ -1,13 +1,13 @@
 <?php
 
-Auth::routes();
+Auth::routes(['verify' => true,'register' => false]);
 
 Route::group(
         [
                 'as' => 'admin.',
                 'prefix' => 'admin',
                 'namespace' => 'Admin',
-                'middleware' => 'auth',
+                'middleware' => ['verified','auth'],
         ],
         function () {
            /* Route::get('/', function () {

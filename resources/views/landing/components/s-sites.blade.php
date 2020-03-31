@@ -46,7 +46,7 @@
 
 
                     </div>
-                    <div class="card-footer text-center"><a class="card-link" target="_blank" href="https://main.atazholy.kz/">Сайтқа
+                    <div class="card-footer text-center"><a class="card-link" target="_blank" href="https://blogs.atazholy.kz/">Сайтқа
                             өту</a></div>
                 </div>
             </div>

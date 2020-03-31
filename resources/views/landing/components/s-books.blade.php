@@ -21,104 +21,15 @@
                         <li class="books-item">
                             <a class="books-link"
                                href="{{ '/'.app()->getLocale().'/'.(trim($item->link)==''?'#':$item->link) }}"><i class="fas fa-book-open"></i> {{ $item->title ?? '' }}</a>
-                            {{--@if(empty(trim($item->link)))/#@else{{ $item->link }} @endif--}}
                         </li>
                     @empty
                         <p style="color: red;">{{ __('landing.books_not_translated') }}</p>
                     @endforelse
-                    {{--<li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Аруақ үні</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Ойға түрткі
-                            ақылға
-                            дем</a></li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Ел Билік және
-                            терроризм</a></li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Ата жолы - бақ
-                            жолы,
-                            қадірлей білсең ағайын</a></li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Құлшылықтар
-                            құпиясы
-                            немесе құраннан бір үзік сыр</a></li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Сөз сұқбаты
-                            және тіл
-                            әдебі</a></li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Ақиқат бастауы</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Ата жолы
-                            1-кітап</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Ата жолы
-                            2-кітап</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Ата жолы
-                            3-кітап</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Ата жолы
-                            4-кітап</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Ата жолы
-                            5-кітап</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Зікір өлеңдер
-                            жинағы</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Зікір өлеңдер
-                            жинағы</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Құран тағлымы</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Жын шайтандар
-                            философиясы</a></li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Иман және
-                            махаббат</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Иман және
-                            сенім</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Масхабшылар
-                            ақидасы</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Түп тұқияннан
-                            қазірге
-                            дейін</a></li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Аққу,
-                            сұңқарлар</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Зікірде келген
-                            ақпараттар</a></li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Түс жору
-                            бөлімі</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Қиямет қайым
-                            белгілері</a></li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Өлеңдер жинағы</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Рухани тоқырау
-                            кезеңдері</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Салт-дәстүрлер,
-                            әдет,
-                            ғұрып, жөн-жоралғылар </a></li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Ауырып ем
-                            іздегенше,
-                            ауырмайтын жол ізде</a></li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Адамзат
-                            құндылықтарының
-                            басты негіздері</a></li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Замана толғауы</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Даналық
-                            негіздері</a>
-                    </li>
-                    <li class="books-item"><a class="books-link" href="#"><i class="fas fa-book-open"></i>Тектілікті
-                            қалыптастыру,
-                            жаңашылдыққа қадам</a>
-                    </li>--}}
                 </ol>
             </div>
         </div>
         <div class="text-center mt-lg-4 mt-3 mb-3 mb-lg-0">
-            <a class="btn btn-amber text-white" target="_blank" href="https://books.atazholy.kz">Кітапхана<i
+            <a class="btn btn-amber text-white" style="font-size: 1rem; font-weight: 600;" target="_blank" href="http://atazholy.kz/kz/books">Жаңа кітапхана<i
                         class="fas fa-graduation-cap ml-2"></i></a>
         </div>
     </div>

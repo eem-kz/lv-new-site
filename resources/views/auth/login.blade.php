@@ -3,13 +3,15 @@
 @section('content')
     <!-- /.login-logo -->
     <div class="card">
+        <h3 class="card-header">Авторизация</h3>
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
 
             <form action="{{ route('login') }}" method="post">
                 @csrf
                 <div class="input-group mb-3">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                           name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
+                           placeholder="Email">
 
                     <div class="input-group-append">
                         <div class="input-group-text">
@@ -23,7 +25,8 @@
                     @enderror
                 </div>
                 <div class="input-group mb-3">
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                           name="password" required autocomplete="current-password" placeholder="Құпиясөз">
 
                     <div class="input-group-append">
                         <div class="input-group-text">
@@ -41,13 +44,13 @@
                         <div class="icheck-primary">
                             <input type="checkbox" id="remember">
                             <label for="remember">
-                                Remember Me
+                                Сақтап қалу
                             </label>
                         </div>
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        <button type="submit" class="btn btn-primary btn-block">Кіру</button>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -56,7 +59,7 @@
 
             @if (Route::has('password.request'))
                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                    {{ __('Forgot Your Password?') }}
+                    Құпиясөзді қалпына келтіру
                 </a>
             @endif
         </div>

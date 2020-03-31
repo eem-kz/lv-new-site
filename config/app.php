@@ -176,8 +176,9 @@ return [
             // App\Providers\BroadcastServiceProvider::class,
                 App\Providers\EventServiceProvider::class,
                 App\Providers\RouteServiceProvider::class,
-                App\Providers\SlugKazToLatServiceProvider::class,
+//                App\Providers\SlugKazToLatServiceProvider::class,
                 App\Providers\LocalizationServiceProvider::class,
+                Yajra\DataTables\DataTablesServiceProvider::class,
 
 
 
@@ -231,8 +232,9 @@ return [
                 'URL' => Illuminate\Support\Facades\URL::class,
                 'Validator' => Illuminate\Support\Facades\Validator::class,
                 'View' => Illuminate\Support\Facades\View::class,
-                'SlugKz' => App\Facades\SlugKazToLatService::class,
+//                'SlugKz' => App\Facades\SlugKazToLatService::class,
                 'LocalizationService' => App\Facades\LocalizationService::class,
+                'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
         ],
 

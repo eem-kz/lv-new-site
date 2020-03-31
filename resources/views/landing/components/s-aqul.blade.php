@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-lg-4 mt-lg-4 mt-3 mb-3 mb-lg-0">
-                <img class="img-circle" src="{{asset('img/@2x/aqul_620x620.png')}}" alt="Ақ Ұл - Қыдырәлі Тарыбаев Момбайұлы">
+                <img class="img-circle" src="{{asset('img/@2x/aqul_620x620__.png')}}" alt="Ақ Ұл - Қыдырәлі Тарыбаев Момбайұлы">
             </div>
             <div class="col-12 col-lg-8">
                 <p>

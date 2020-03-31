@@ -7,10 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\BookCategory;
 use App\Models\BookPost;
 use App\User;
-use DataTables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Session;
 
 class BookPostController extends Controller
 {
@@ -18,63 +16,14 @@ class BookPostController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     * @throws \Exception
      */
-    public function index(Request $request)
+    public function index()
     {
-        if ($request->ajax()) {
-            $posts = BookPost::with('user', 'bookCategory')->latest()->get();
-//            $posts = BookPost::latest()->get();
-
-            return DataTables::of($posts)
-                    ->addColumn('action', function (BookPost $post) {
-                        $button = '<a href="' . route("admin.book.edit", $post) . '" class="btn btn-info waves-effect"> <i class="fas fa-edit"></i></a>';
-                        $button .= '&nbsp;&nbsp;&nbsp;<button class="btn btn-danger waves-effect" type="button" onclick="if(confirm(\'Are you sure? You want to delete this?\')){
-                                              event.preventDefault();
-                                              document.getElementById("delete-form-'.$post->id.'").submit();
-                                              } else {
-                                              event.preventDefault();
-                                              }">
-                                          <i class=\'fas fa-trash-alt\'></i>
-                                      </button>
-                                      <form id="delete-form-'.$post->id.'" action="' . route("admin.book.destroy", $post->id) . '" method="POST" style="display: none;">
-                                          <input type="hidden" name="_token" value="' . csrf_token() . '" />
-                                          <input type="hidden" name="_method" value="PUT">
-                                      </form>';
-                        return $button;
-                    })
-                    ->addColumn('category', function (BookPost $post) {
-                        if ($post->bookCategory->parent_id == 0):
-                            return $post->bookCategory->title;
-                        endif;
-                        $lm = BookCategory::find($post->bookCategory->parent_id);
-                            return $lm->title.'<br>'.$post->bookCategory->title;
-                    })
-                    ->addColumn('post_modified', function (BookPost $post) {
-                        return LocalizationService::reverseConvertDate($post->post_modified) . 'ж.';
-                    })
-                    ->addColumn('is_approved', function (BookPost $post) {
-                        if ($post->is_approved == true):
-                            $html = '<span class="badge bg-success">Тексерілген</span>';
-                        else:
-                            $html = '<span class="badge bg-pink">Жоқ</span>';
-                        endif;
-                        return $html;
-                    })
-                    ->addColumn('post_status', function (BookPost $post) {
-
-                        if ($post->post_status == true):
-                            return '<span class="badge bg-success" > Жарияланған</span >';
-                        else:
-                            return '<span class="badge bg-pink" > Жоқ</span >';
-                        endif;
-                    })
-                    ->rawColumns(['category','action', 'is_approved', 'post_status'])
-//                    ->toJson();
-                    ->make(true);
-        }
-        return view('admin.book_posts.index');
-
+        $posts = BookPost::with('user','bookCategory')->latest()->get();
+//        dd($posts);
+        return view('admin.book_posts.index',
+                compact('posts')
+        );
     }
 
     /**
@@ -196,6 +145,6 @@ class BookPostController extends Controller
     public function destroy($id)
     {
         BookPost::find($id)->delete();
-        return redirect()->back()->with('successMsg', 'Book Successfully Delete');
+        return redirect()->back()->with('successMsg','Book Successfully Delete');
     }
 }

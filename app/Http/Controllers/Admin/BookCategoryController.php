@@ -5,21 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Facades\LocalizationService;
 use App\Http\Controllers\Controller;
 use App\Models\BookCategory;
+use DataTables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
 
 class BookCategoryController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('admin.book_categoryes.index', [
-                'books_list' => $books_names = BookCategory::with('children')->parent()->get(),
+                'books_list' => BookCategory::with('children')->parent()->get(),
                 'delimiter' => '',
                 'i' => 0
         ]);
