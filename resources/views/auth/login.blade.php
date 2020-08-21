@@ -62,6 +62,7 @@
                     Құпиясөзді қалпына келтіру
                 </a>
             @endif
+            <a class="btn btn-link" href="{{ route('landing', app()->getLocale()) }}">Сайтқа өту</a>
         </div>
         <!-- /.login-card-body -->
     </div>

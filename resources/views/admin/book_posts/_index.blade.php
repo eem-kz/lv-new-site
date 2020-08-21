@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
-                    @include('admin.book_categoryes.partials.msg')
+                    @include('admin.book_categories.partials.msg')
                     <div class="card" style="width: 100%">
                         <div class="card-body">
                             <a href="{{ route('admin.book.create') }}" class="btn btn-primary">

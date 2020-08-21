@@ -28,8 +28,8 @@
                 </ol>
             </div>
         </div>
-        <div class="text-center mt-lg-4 mt-3 mb-3 mb-lg-0">
-            <a class="btn btn-amber text-white" style="font-size: 1rem; font-weight: 600;" target="_blank" href="http://atazholy.kz/kz/books">Жаңа кітапхана<i
+        <div class="text-center mt-lg-4 mt-5">
+            <a class="btn btn-amber text-white" style="font-size: 1rem; font-weight: 600;" target="_blank" href="{{ route('books',app()->getLocale()) }}">Жаңа кітапхана<i
                         class="fas fa-graduation-cap ml-2"></i></a>
         </div>
     </div>

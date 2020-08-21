@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Kalnoy\Nestedset\NodeTrait;
 /**
  * App\Models\BookCategory
  *
@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookCategory lang($arg)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookCategory newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookCategory newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookCategory parent()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookCategory query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookCategory whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookCategory whereLang($value)
@@ -29,11 +28,22 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookCategory whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookCategory whereTitle($value)
  * @mixin \Eloquent
+ * @property int $_lft
+ * @property int $_rgt
+ * @property-read \App\Models\BookCategory|null $parent
+ * @property-read \App\Models\BookCategory|null $parentOnChild
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BookPost[] $posts
+ * @property-read int|null $posts_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookCategory d()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookCategory noParent()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookCategory parent()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookCategory whereLft($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookCategory whereRgt($value)
  */
 class BookCategory extends Model
 {
 
-
+    use NodeTrait;
     /**
      * The attributes that are mass assignable.
      *
@@ -45,13 +55,8 @@ class BookCategory extends Model
             'slug',
     ];
 
+    protected $table = 'books_categories';
     public $timestamps = false;
-
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-        $this->table = 'books_categories';
-    }
 
 
     public function scopeLang($query, $arg)
@@ -61,7 +66,7 @@ class BookCategory extends Model
 
     public function scopeParent($query)
     {
-        return $query->where('parent_id', '0');
+        return $query->where('parent_id', null);
     }
 
 
@@ -86,6 +91,14 @@ class BookCategory extends Model
     public function posts()
     {
         return $this->hasMany(BookPost::class, 'book_category_id', 'id')->select(['book_category_id', 'post_title', 'slug']);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parentOnChild()
+    {
+        return $this->belongsTo(self::class,'parent_id');//->where('parent_id','>','0');
     }
 
 }

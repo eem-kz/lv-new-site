@@ -1,29 +1,26 @@
 <?php
 
-Auth::routes(['verify' => true,'register' => false]);
+Auth::routes(['verify' => true, 'register' => false]);
 
 Route::group(
         [
                 'as' => 'admin.',
                 'prefix' => 'admin',
                 'namespace' => 'Admin',
-                'middleware' => ['verified','auth'],
+                'middleware' => ['verified', 'auth'],
         ],
         function () {
-           /* Route::get('/', function () {
-                return redirect('/dashboard');
-            });*/
-//            Route::redirect('/','/dashboard');
-//            Route::get('/dashboard', 'DashboardController@index');
-
-            Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+            Route::get('/', 'DashboardController@index')->name('dashboard');
             Route::resource('/category', 'BookCategoryController');
             Route::resource('/book', 'BookPostController');
+            Route::resource('/tag', 'TagController');
+
+            Route::resource('/landing/languages','LandingLanguagesController');
+            Route::resource('/landing/menu','LandingMenuController');
+            Route::resource('/landing/section','LandingSectionController');
 
         }
 );
-
-
 
 
 Route::get('/', function () {

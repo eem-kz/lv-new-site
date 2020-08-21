@@ -12,16 +12,18 @@ use Illuminate\Support\Carbon;
 
 class BookCategoryController extends Controller
 {
-
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Exception
      */
-    public function index(Request $request)
+    public function index()
     {
-        return view('admin.book_categoryes.index', [
-                'books_list' => BookCategory::with('children')->parent()->get(),
+//        $books_list = BookCategory::get()->toTree();
+
+//        return view('admin.book_categories.index', compact('html','books_list'));
+        return view('admin.book_categories.index', [
+                'book_list' => BookCategory::get()->toTree(),
                 'delimiter' => '',
                 'i' => 0
         ]);
@@ -34,12 +36,14 @@ class BookCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.book_categoryes.create', [
+        return view('admin.book_categories.create', [
                 'book' => [],
-                'books_list' => BookCategory::with('children')->parent()->get(),
+                'books_list' => BookCategory::get()->toTree(),
                 'delimiter' => '',
         ]);
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -69,7 +73,7 @@ class BookCategoryController extends Controller
      */
     public function show($id)
     {
-        return view('admin.book_categoryes.show', [
+        return view('admin.book_categories.show', [
                 'category' => BookCategory::find($id),
         ]);
     }
@@ -82,9 +86,9 @@ class BookCategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.book_categoryes.edit', [
+        return view('admin.book_categories.edit', [
                 'category' => BookCategory::find($id),
-                'books_list' => BookCategory::with('children')->parent()->get(),
+                'books_list' => BookCategory::get()->toTree(),
                 'delimiter' => '',
         ]);
     }

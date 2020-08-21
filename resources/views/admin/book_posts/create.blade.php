@@ -5,6 +5,8 @@
 @push('css')
     <link rel="stylesheet" href="{{ asset('bastyq/plugins/summernote/summernote-bs4.css') }}">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{{ asset('bastyq/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bastyq/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <style>
         .ui-datepicker-trigger{
             border:none;
@@ -61,8 +63,15 @@
             integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
             crossorigin="anonymous"></script>
     <script src="{{ asset('bastyq/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
+    <script src="{{ asset('bastyq/plugins/select2/js/select2.full.min.js') }}"></script>
     <script>
         $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2();
+
+            //Initialize Select2 Elements
+
+
             $('#post_content').summernote({
                 height: 300,                 // set editor height
                 minHeight: null,             // set minimum height of editor

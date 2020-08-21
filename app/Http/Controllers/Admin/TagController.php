@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Facades\LocalizationService;
 use App\Http\Controllers\Controller;
+use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class TagController extends Controller
 {
@@ -14,7 +17,10 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.book_tags.index', [
+                'tag_list' => Tag::get(),
+        ]);
+
     }
 
     /**
@@ -24,7 +30,8 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.book_tags.create');
+
     }
 
     /**
@@ -35,16 +42,23 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+                'tag_title' => 'required|max:255|min:3',
+                'tag_slug' => ''
+        ]);
+        $data['tag_slug'] = LocalizationService::slugKazToLat($data['tag_title']) . '-' . Carbon::now()->format('dmyHi');
+        Tag::create($data);
+        return redirect()->route('admin.tag.index')->with('successMsg', 'Tag Successfully Saved');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Tag $tag)
     {
         //
     }
@@ -52,34 +66,43 @@ class TagController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        //
+        return view('admin.book_tags.edit', compact('tag'));
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Tag $tag)
     {
-        //
+        $data = $request->validate([
+                'tag_title' => 'required|max:255|min:3',
+        ]);
+
+        $tag->update($data);
+//        return redirect('/admin/subdivision')->with('success', 'Show is successfully saved');
+        return redirect()->route('admin.tag.index')->with('successMsg', 'Tag Successfully Saved');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+        return redirect()->back()->with('successMsg', 'Tag Successfully Delete');
     }
 }

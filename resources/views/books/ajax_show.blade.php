@@ -6,7 +6,11 @@
 </div>
 <!-- /.card-body -->
 <div class="card-footer">
-    <small>Кітап атауы: {{ $book->bookCategory->title }}</small>
+    <small>Кітап атауы:
+    @isset($book->bookCategory->parentOnChild->title)
+    {!! $book->bookCategory->parentOnChild->title .', ' !!}
+    @endisset
+     {{ $book->bookCategory->title }}</small>
     <br>
     <small>Жарияланған күні: {{ $book->post_modified }}</small>
 </div>

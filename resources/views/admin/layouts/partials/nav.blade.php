@@ -12,7 +12,44 @@
                 </p>
             </a>
         </li>
-        <li class="nav-item {{ Request::is('admin/category*') ? 'menu-open' : Request::is('admin/book*') ? 'menu-open' :'' }}">
+            <li class="nav-item {{
+                    Request::is('admin/landing*') ? 'menu-open' : ''
+        }}">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-landmark"></i>
+                    <p>
+                        Басқы бет
+                        <i class="fas fa-angle-left right"></i>
+
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.languages.index') }}" class="nav-link {{ Request::is('admin/book*') ? 'active' : '' }}">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Тілдер</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.menu.index') }}" class="nav-link {{ Request::is('admin/book*') ? 'active' : '' }}">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Сілтемелер</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.section.index') }}" class="nav-link {{ Request::is('admin/book*') ? 'active' : '' }}">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Секция мәтіндері</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        <li class="nav-item {{
+                    Request::is('admin/category*') ? 'menu-open' :
+                    Request::is('admin/book*') ? 'menu-open' :
+                    Request::is('admin/tag*') ? 'menu-open' :
+                    ''
+        }}">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
@@ -35,7 +72,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#!" class="nav-link">
+                    <a href="{{ route('admin.tag.index') }}" class="nav-link {{ Request::is('admin/tag*') ? 'active' : '' }}">
                         <i class="fas fa-angle-right nav-icon"></i>
                         <p>Ілмектер</p>
                     </a>

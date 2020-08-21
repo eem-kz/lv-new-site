@@ -13,6 +13,24 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+
+# router/api.php
+Route::group(
+        [
+                'middleware' => ['api'],
+                'prefix' => 'landing'
+        ],
+        static function ($router) {
+
+            Route::get('menu-list/{lang?}', 'Api\LandingApiController@getMenuList');
+            Route::post('menu-list/{lang?}', 'Api\LandingApiController@getMenuList');
+//            Route::post('text-section/{lang?}', 'Api\LandingApiController@getSectionText');
+
+//            Route::post('register', 'MemberController@register');
+
+//Route::apiResource('menu-list/{lang}', 'Api\LandingApiController@getMenuList');
+        });

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Kalnoy\Nestedset\NestedSet;
 
 class CreateBooksCategoriesTable extends Migration
 {
@@ -15,7 +16,7 @@ class CreateBooksCategoriesTable extends Migration
     {
         Schema::create('books_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('parent_id')->default(0)->unsigned();
+            $table->nestedSet();
             $table->string('title');
             $table->string('slug')->nullable();
             $table->string('link')->default('#');

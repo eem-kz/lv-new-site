@@ -14,12 +14,8 @@ class BooksController extends Controller
      */
     public function index()
     {
-//        dd(__METHOD__);
-        $books_names = BookCategory::with('children', 'posts')->parent()->lang(app()->getLocale())->get();
-//        $posts = BookCategory::with('children','posts')->noParent()->get();
-
-//        dd($posts);
-        return view('books.index', compact('books_names'));
+        $book_names = BookCategory::with('posts')->lang(app()->getLocale())->get()->toTree();
+        return view('books.index', compact('book_names'));
     }
 
 
@@ -28,16 +24,24 @@ class BooksController extends Controller
      */
     public function show($lang = 'KZ', $slug)
     {
-        $book = BookPost::where('slug', $slug)->with('bookCategory')->first();
+        $book = BookPost::where('slug', $slug)
+                ->lang($lang)
+                ->approved()
+                ->published()
+                ->with('bookCategory')->first();
+
         if (!$book) abort(404);
+        views($book)->record();
+
+//        $book->timestamps = false;
+//        $book->increment('view_count');
+
         if (request()->ajax()) {
             return view('books.ajax_show', compact('book'));
-        }else{
-            $books_names = BookCategory::with('children', 'posts')->parent()->lang(app()->getLocale())->get();
-
-            return view('books.show', compact('book','books_names'));
         }
 
-//        dd($book);
+        $book_names = BookCategory::with('posts')->lang(app()->getLocale())->get()->toTree();
+        return view('books.show', compact('book', 'book_names'));
+
     }
 }

@@ -18,7 +18,7 @@
         </td>
     </tr>
     @if (count($item->children) > 0)
-        @include('admin.book_categoryes.partials.table', [
+        @include('admin.book_categories.partials.table', [
           'books_list' => $item->children,
           'delimiter'  => ' - ' . $delimiter,
           'i'=>$i++

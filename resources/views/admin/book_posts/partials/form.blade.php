@@ -66,6 +66,19 @@
             </div>
 
         </div><!-- /.row -->
+        <div class="row">
+            <div class="form-group w-100">
+                <label>Ілмектер</label>
+                <div class="select2-purple">
+                    <select class="select2" multiple="multiple" name="tags[]" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                      @foreach($tags as $tag)
+                        <option value="{{ $tag->id }}">{{ $tag->tag_title }}</option>
+                      @endforeach
+                    </select>
+                </div>
+            </div>
+            <!-- /.form-group -->
+        </div><!-- /.row -->
 
     </div>
 </div>

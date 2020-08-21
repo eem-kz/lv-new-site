@@ -31,10 +31,9 @@
         </div>
     </div><!-- /.container-fluid -->
 
-    </div>{{--/#page--}}
     <nav id="menu">
-        <ol type="1" id="panel-menu">
-            @include('books.partials.list-books', ['books_names' => $books_names ?? null])
+        <ol id="panel-menu">
+            @include('books.partials.list-books', ['book_names' => $book_names ?? null])
         </ol>
     </nav>
 

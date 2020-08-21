@@ -179,7 +179,7 @@ return [
 //                App\Providers\SlugKazToLatServiceProvider::class,
                 App\Providers\LocalizationServiceProvider::class,
                 Yajra\DataTables\DataTablesServiceProvider::class,
-
+                CyrildeWit\EloquentViewable\EloquentViewableServiceProvider::class,
 
 
         ],

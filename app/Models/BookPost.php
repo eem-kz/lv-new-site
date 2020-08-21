@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -44,9 +46,22 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookPost whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookPost whereViewCount($value)
  * @mixin \Eloquent
+ * @property int $book_category_id
+ * @property-read \App\Models\BookCategory $bookCategory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookPost whereBookCategoryId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\CyrildeWit\EloquentViewable\View[] $views
+ * @property-read int|null $views_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookPost approved()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookPost lang($arg)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookPost orderByUniqueViews($direction = 'desc', $period = null, $collection = null, $as = 'unique_views_count')
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookPost orderByViews($direction = 'desc', $period = null, $collection = null, $unique = false, $as = 'views_count')
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookPost published()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\BookPost withViewsCount($period = null, $collection = null, $unique = false, $as = 'views_count')
  */
-class BookPost extends Model
+class BookPost extends Model implements Viewable
 {
+    use InteractsWithViews;
+
 
     protected $guarded = [];
 
@@ -56,7 +71,7 @@ class BookPost extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User','post_author','id')->select(['id','name']);
+        return $this->belongsTo('App\User', 'post_author', 'id')->select(['id', 'name']);
     }
 
     /**
@@ -64,7 +79,36 @@ class BookPost extends Model
      */
     public function bookCategory()
     {
-        return $this->belongsTo(BookCategory::class,'book_category_id','id')->select(['id','parent_id','title']);
-
+        return $this->belongsTo(BookCategory::class, 'book_category_id', 'id')
+                ->with('parentOnChild');
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
+
+
+
+
+
+    /**
+     * @param $query
+     * @param $arg
+     * @return mixed
+     */
+    public function scopeLang($query, $arg)
+    {
+        return $query->where('lang', strtoupper($arg));
+    }
+
+    public function scopeApproved($query)
+    {
+        return $query->where('is_approved', 1);
+    }
+    public function scopePublished($query)
+    {
+        return $query->where('post_status', 1);
+    }
+
 }

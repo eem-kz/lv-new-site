@@ -15,6 +15,16 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('tag_title');
+            $table->string('tag_slug');
+        });
+
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('tag_id');
+            $table->foreign('post_id')->references('id')->on('book_posts')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +36,8 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('post_tag');
         Schema::dropIfExists('tags');
+
     }
 }

@@ -37,7 +37,7 @@
     <div class="pulse"></div>
 </div>
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
     <div class="container">
         <div class="row no-gutters w-100">
             <div class="col-auto social-buttons">
@@ -65,8 +65,15 @@
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#books">Кітапхана</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#atazholy">Ата жолы</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ата жолы
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item js-scroll-trigger" href="#atazholy">Ата жолы түсінігі</a>
+                                <a class="dropdown-item js-scroll-trigger" href="#gbfk">Ата жолы тарихы</a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#aqul">Ақ Ұл</a>
@@ -113,7 +120,7 @@
 @yield('content')
 
 <!-- Footer -->
-<footer class="section-overlay py-lg-5 py-0">
+<footer class="section-overlay py-lg-5 py-3">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10 col-12 pb-3 pb-lg-0">
@@ -138,8 +145,8 @@
                                 class="fab fa-twitter"></i></a>
                     <a href="https://www.youtube.com/channel/UCG3yvnpQHKPb4WX9fHZ6_9A/videos" target="_blank" class="btn-floating btn-lg btn-yt" role="button"><i
                                 class="fab fa-youtube"></i></a>
-                    <a href="https://t.me/atazholy" target="_blank" class="btn-floating btn-lg btn-reddit" role="button"><i
-                                class="fab fa-telegram"></i></a>
+                    <a href="https://t.me/atazholy" target="_blank" class="btn-floating btn-lg btn-reddit" role="button">
+                        <i class="fab fa-telegram"></i></a>
                 </div><!-- /.social-buttons -->
             </div>
         </div>
@@ -149,6 +156,6 @@
 
 {{--<link rel="stylesheet" href="css/styles.min.css">--}}
 <link href="{{ asset('landing/css/styles.min.css') }}" rel="stylesheet">
-<script src="{{asset('landing/js/app.js')}}"></script>
+<script src="{{asset('landing/js/scripts.min.js')}}"></script>
 </body>
 </html>

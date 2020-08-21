@@ -12,8 +12,8 @@
           content="Ата жолы, аруақ, тылсым дүние, тылсым құбылыстар, түс көру, түс жору, салт дәстүр, ата, баба, ана, әдебиет, тарих, би, шешен, жиренше, әулие, ұлттық, хан, дін, ислам, қазақ"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-    <meta property="og:image" content="img/@1x/preview.jpg">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
+    <meta property="og:image" content="i{{ asset('img/og-image_1.png') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Chrome, Firefox OS and Opera -->
@@ -28,7 +28,7 @@
         }
 
         html {
-            background-color: #e8a0af;
+            background-color: #fff;
         }</style>
 </head>
 
@@ -50,22 +50,29 @@
 <script>
     $(function () {
 
-        $('a.get-book').click(function () {
+//        $('a.get-book').click(function () {
+        $('.mm-listitem').on('click','a.get-book',function () {
             event.preventDefault();
-            let url = $(this).attr('href');
-            // let slug = $(this).data('slug');
-            $.ajax({
-                url: url,
-                type: 'GET',
-                // data: {slug: slug},
-                success: function (response) {
-                    history.pushState('', '', url);
-                    $('#response').html(response);
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-                }
-            });
+           /* alert(1);
+            $(this).addClass('finished');*/
+            if(!$(this).hasClass("finished")) {
+                let url = $(this).attr('href');
+                $(this).addClass('finished');
+                $('a.get-book').not(this).removeClass("finished");
+                // let slug = $(this).data('slug');
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    // data: {slug: slug},
+                    success: function (response) {
+                        history.pushState('', '', url);
+                        $('#response').html(response);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    }
+                });
+            }
             return false; // for good measure
         });
 
